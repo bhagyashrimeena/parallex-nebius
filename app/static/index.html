@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#0b1010" />
+<meta name="description" content="PARALLAX is an evidence-first visual inspection studio. Capture what you know, expose what you don't, and plan the next best photo." />
+<title>PARALLAX — Evidence changes everything</title>
+<link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" aria-label="Primary navigation">
+    <div class="brand"><span class="brand-icon">◈</span><span>PARALLAX<span class="brand-dot">.</span><small>INSPECTION STUDIO</small></span></div>
+    <div class="workspace-switch"><span class="ws-icon">P</span><span>Field workspace<small>Hackathon edition</small></span><span class="more">⌄</span></div>
+    <div class="side-section-label">WORKSPACE</div>
+    <button class="nav-link active" id="navWorkspace"><span class="nav-symbol">▦</span><span>Inspection desk</span><span class="nav-right">01</span></button>
+    <button class="nav-link" id="navNew"><span class="nav-symbol">⊕</span><span>New inspection</span></button>
+    <div class="side-section-label side-top">YOUR PROCESS</div>
+    <div class="process-list" aria-label="Inspection steps">
+      <div class="process-step current" id="stepCapture"><span>01</span><div><b>Capture evidence</b><small>Photos & context</small></div></div>
+      <div class="process-step" id="stepAnalyze"><span>02</span><div><b>Trace observations</b><small>NVIDIA Nemotron</small></div></div>
+      <div class="process-step" id="stepResolve"><span>03</span><div><b>Resolve uncertainty</b><small>Next best action</small></div></div>
+      <div class="process-step" id="stepReport"><span>04</span><div><b>Export case</b><small>Human-review record</small></div></div>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="infra-card"><span class="infra-rect">▥</span><b>Powered by open AI</b><p>Native NVIDIA visual reasoning served through Nebius Token Factory.</p><span class="infra-provider">NEBIUS <i>×</i> NVIDIA</span></div>
+      <div class="avatar-row"><span class="avatar">P</span><div><b>PARALLAX Studio</b><small>Evidence-first by design</small></div><span class="mini-dot"></span></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="crumb">WORKSPACE <span>/</span> <b>INSPECTION DESK</b></div>
+      <div class="top-right"><span class="model-badge" id="modelBadge"><span class="status-light"></span>Checking inference...</span><span class="divider-vertical"></span><span class="top-utc" id="clock"></span></div>
+    </header>
+
+    <div class="page-content">
+      <section class="hero-head">
+        <div class="eyebrow"><span class="star-cross">✳</span> VISUAL INTELLIGENCE / INSPECTION SYSTEM <span class="hero-version">V 1.0</span></div>
+        <div class="hero-title-row"><div><h1>See what matters<span class="highlight">.</span><br/><span class="h1-muted">Question the rest.</span></h1><p class="hero-sub">Most AI tells you what it sees. PARALLAX tells you <em>what it can't prove</em> — and exactly what to capture next.</p></div><div class="hero-mark" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="orb-center">P<span>↗</span></div></div></div>
+      </section>
+
+      <div class="work-grid">
+        <section class="main-column">
+          <section class="panel capture-panel" aria-labelledby="createHeading">
+            <div class="panel-header"><div><span class="panel-index">01 / EVIDENCE INPUT</span><h2 id="createHeading">Start with the facts.</h2><p>Give your inspection a focus and a visual starting point.</p></div><span class="panel-corner">↗</span></div>
+            <div class="input-grid">
+              <label class="field"><span>INSPECTION TYPE</span><div class="select-wrap"><select id="category"><option>Equipment & assets</option><option>Property condition</option><option>Vehicle handover</option><option>Surface & structural</option><option>General visual review</option></select></div></label>
+              <label class="field"><span>INSPECTION OBJECTIVE</span><input id="objective" type="text" value="Document visible condition and outstanding uncertainty" maxlength="500" placeholder="What are we trying to verify?" /></label>
+            </div>
+            <div class="upload-zone" id="dropZone" tabindex="0" role="button" aria-label="Select or drop evidence images">
+              <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden />
+              <div class="upload-graphic"><div class="upload-box"><span>↥</span></div><span class="mini-cross">✣</span></div>
+              <h3>Drop your evidence here<span class="highlight">.</span></h3><p>Or <span class="upload-link">browse files</span> from your device</p><small>JPG · PNG · WEBP / UP TO 6 IMAGES / MAX 8MB EACH</small>
+            </div>
+            <div id="previewGallery" class="preview-gallery hidden" aria-live="polite"></div>
+            <div class="capture-actions"><span class="hint"><span class="hint-star">✳</span> We preserve the difference between observation and interpretation.</span><button class="primary-btn" id="runBtn" disabled>Analyze evidence <span>↗</span></button></div>
+          </section>
+
+          <section class="panel result-panel hidden" id="resultPanel" aria-live="polite">
+            <div class="panel-header"><div><span class="panel-index">02 / VISUAL INVESTIGATION</span><h2>What the evidence supports.</h2><p>Findings are hypotheses until a human confirms them.</p></div><span class="case-label" id="caseLabel">CASE / NEW</span></div>
+            <div class="result-status"><span class="result-status-icon">◎</span><div><b id="modeTitle">Evidence review required</b><p id="summaryText">—</p></div></div>
+            <div class="result-toolbar"><span class="tool-label" id="findingsCount">0 OBSERVATIONS</span><span class="tool-label" id="traceText">NO MODEL TRACE</span></div>
+            <div id="findingList" class="finding-list"></div>
+          </section>
+
+          <section class="panel next-panel hidden" id="nextPanel">
+            <div class="panel-header"><div><span class="panel-index">03 / ACTIVE EVIDENCE LOOP</span><h2>One more angle. Less doubt.</h2><p>Target the unknown, not another generic photo.</p></div></div>
+            <div class="next-grid"><div class="next-icon">↗</div><div><span class="next-kicker">RECOMMENDED NEXT CAPTURE</span><h3 id="nextTitle">—</h3><p id="nextInstruction">—</p><div class="reason"><span>WHY IT MATTERS</span><p id="nextReason">—</p></div></div></div>
+            <div class="followup-row"><div><b>Got the next angle?</b><small>Add it to this case and re-run the evidence check.</small></div><input id="followupInput" type="file" accept="image/png,image/jpeg,image/webp" hidden /><button class="outline-btn" id="followupBtn">+ Add follow-up photo</button></div><div class="human-question"><span class="question-symbol">?</span><span><b>Human review question</b><small id="nextQuestion">—</small></span></div>
+          </section>
+
+          <section class="panel report-panel hidden" id="reportPanel">
+            <div class="panel-header"><div><span class="panel-index">04 / INSPECTION RECORD</span><h2>Make your reasoning traceable.</h2><p>Export observations, evidence references and review decisions.</p></div></div>
+            <div class="report-actions"><button class="outline-btn" id="exportBtn"><span>↧</span> Download case JSON</button><button class="outline-btn" id="printBtn"><span>▤</span> Print evidence report</button></div>
+            <p class="report-note">PARALLAX never replaces a qualified professional inspection. Reports require human approval.</p>
+          </section>
+        </section>
+
+        <aside class="right-column" aria-label="Evidence intelligence dashboard">
+          <div class="metrics-card"><div class="metrics-head"><span>LIVE CASE SIGNALS</span><span class="blink">✳</span></div><div class="big-stat"><strong id="evidenceCount">00</strong><span>EVIDENCE<br/>FRAMES</span></div><div class="metric-divider"></div><div class="metric-line"><span>Evidence quality</span><b id="qualitySignal">Awaiting photos</b></div><div class="metric-line"><span>Evidence-linked findings</span><b id="verifiedSignal">—</b></div><div class="metric-line"><span>Open uncertainties</span><b id="uncertaintySignal">—</b></div><div class="metric-line"><span>Review state</span><b id="reviewSignal">Not started</b></div><div class="metric-foot"><span>◌</span> ALL FINDINGS TRACE TO PHOTO IDS</div></div>
+          <div class="panel right-guide"><span class="panel-index">THE PARALLAX PRINCIPLE</span><div class="quote-mark">“</div><h3>Know what you know.<br/>Show what you don't.</h3><p>Instead of a confident answer from one uncertain image, PARALLAX builds an evidence trail and identifies the most useful next action.</p><div class="guide-rule"></div><div class="guide-line"><span class="guide-bullet">01</span><span>Observe, don't overstate</span></div><div class="guide-line"><span class="guide-bullet">02</span><span>Link every claim to evidence</span></div><div class="guide-line"><span class="guide-bullet">03</span><span>Close the loop with a next shot</span></div></div>
+          <div class="sample-card"><div class="sample-top"><span>NO PHOTOS READY?</span><span>↗</span></div><h3>Explore a sample case.</h3><p>A synthetic inspection record to experience the workflow. Not an AI-generated result.</p><button class="sample-btn" id="sampleBtn">Open sample inspection <span>→</span></button></div>
+        </aside>
+      </div>
+      <footer class="footer"><span>PARALLAX / EVIDENCE-FIRST VISUAL AI</span><span>HUMAN-IN-THE-LOOP BY DEFAULT</span><span>© 2026 PARALLAX STUDIO</span></footer>
+    </div>
+  </main>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
+<div class="modal hidden" id="lightbox" role="dialog" aria-modal="true" aria-label="Evidence image preview"><button id="closeLightbox" class="modal-close" aria-label="Close image">×</button><img id="modalImg" alt="Expanded inspection evidence" /></div>
+<script defer src="/static/app.js"></script>
+</body>
+</html>

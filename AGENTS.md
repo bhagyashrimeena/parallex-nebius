@@ -4,7 +4,7 @@
 Ship the existing PARALLAX Studio app as a compliant submission for the Nebius x NVIDIA Global AI Hackathon. Do not substitute a mocked demo for real inference. Deadline: Friday, 30 October 2026, 10:00 AM Pacific / 10:30 PM IST. Personal submission cutoff: 3:00 PM IST, before the user's separately booked outing.
 
 ## First action: source audit
-The README was initialized before the complete app was uploaded. Confirm that app/main.py, app/engine.py, app/static/index.html, app/static/app.js, app/static/styles.css, requirements.txt, Dockerfile, and tests/ exist on this branch. If missing, do not claim the app is implemented. Have the user run the provided local ZIP publication script or upload the PARALLAX Studio submission kit from the preceding ChatGPT handoff; do not guess that files exist.
+Confirm that app/main.py, app/engine.py, app/static/index.html, app/static/app.js, app/static/styles.css, requirements.txt, Dockerfile, and tests/ exist on this branch. Audit source and run tests at the current HEAD before making claims about functionality.
 
 ## Existing implementation, once present
 - FastAPI / Pydantic / Pillow / HTTPX backend, no frontend build tool; frontend vanilla JS/CSS/HTML.
@@ -12,7 +12,7 @@ The README was initialized before the complete app was uploaded. Confirm that ap
 - Nebius Token Factory OpenAI-compatible vision call with NVIDIA Nemotron 3.5 Super VL, followed by a second model call to suggest a more informative photo angle.
 - Structured observations referencing photo IDs, uncertainty and rejected ungrounded citations, human review actions, JSON export.
 - Synthetic offline demo clearly marked as fixture. Never present it as live model evidence.
-- Unit and integration tests (previously 18 passed, re-run at current HEAD).
+- Unit and integration tests (20 passed locally on October 29; re-run at current HEAD).
 
 ## Acceptance gates
 1. Source is present and clean; review all differences; no .env, tokens, data/sessions, sensitive images, caches, or credential leakage in git or logs.

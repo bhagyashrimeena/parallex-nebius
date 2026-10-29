@@ -1,4 +1,4 @@
-> **Repository preparation status (2026-10-29):** Documentation and Codex handoff are committed; the full application source is **NOT YET pushed**. Use the ZIP plus `push_parallax.ps1` from the ChatGPT handoff to publish it before deploying. After verifying the source and tests, remove this banner. Follow `AGENTS.md` and [issue #1](https://github.com/bhagyashrimeena/parallex-nebius/issues/1).
+> **Verification status (2026-10-29):** The application source is included. Local automated tests pass (20/20) and frontend JavaScript parses. A real Nebius request, hosted HTTPS workflow, public video, and Devpost submission still require verification. Follow `AGENTS.md` and [issue #1](https://github.com/bhagyashrimeena/parallex-nebius/issues/1).
 
 # PARALLAX Studio
 
@@ -6,7 +6,7 @@
 
 PARALLAX is an evidence-first visual inspection copilot. Upload up to six photos of an asset or property, inspect the image quality, ask **NVIDIA Nemotron 3.5 Super VL** for visible observations, discard claims that are not linked to uploaded photo IDs, and use a second model call to plan the most useful missing camera angle. A person then confirms, rejects, or requests more evidence before the case is exported.
 
-Interface screenshots are included in the downloadable submission kit.
+Interface screenshots are in `docs/screenshots/`.
 
 > **Hackathon target:** Nebius x NVIDIA Global AI Hackathon (Best Apps and Agents). The application makes **two runtime calls to Nebius Token Factory** in live mode using NVIDIA's open vision-language model. An API key is mandatory for live inference. **Offline sample** is synthetic, prominently labeled, and never passed off as an NVIDIA model result. Live Token Factory connectivity and hosted deployment require verification using your own key; local mocked tests do not prove live connectivity.
 
@@ -104,7 +104,9 @@ pip install -r requirements-dev.txt
 pytest -q
 ```
 
-The test suite stubs `app.engine._call_nebius` for the two-call integration test. **It is not a substitute for a live end-to-end test.**
+The test suite stubs `app.engine._call_nebius` for the two-call integration test. On October 29, 2026, `python -m pytest -q` passed **20 tests** locally; `node --check app/static/app.js` also passed. **These are not substitutes for a live end-to-end test.**
+
+For a temporary live verification using the included synthetic image, run `powershell -ExecutionPolicy Bypass -File .\scripts\verify-live.ps1` from the repository root. It prompts for the API key with hidden input, makes two real Token Factory requests, checks human review and JSON export, prints redacted status/timings, and removes the temporary case. Do not record a success claim unless this script actually passes.
 
 ### Validate real integration
 
@@ -122,7 +124,7 @@ Failure is explicit: the server returns a non-2xx error for missing keys, model 
 
 A `render.yaml` and `Dockerfile` are provided. Create a web service from the **public** GitHub repository, set `NEBIUS_API_KEY` in the host's secret environment variables, select the Docker deploy, and set `/api/health` as the health check. Alternative Docker-capable hosts work. The default Render config specifies the free plan, which may sleep and has ephemeral disk; use persistent storage or a reliable paid service if sustained testing and retained cases matter. **A deployment URL is not yet verified.**
 
-The hackathon requires free access for judges until judging ends in December 2026. Only use images you are entitled to share. The app is a demonstration, not a production multi-tenant evidence platform: there is no account system, encryption at rest, permanent storage SLA, or robust user-specific rate limit. Uploaded case URLs are unguessable but shareable; do not upload confidential imagery on a public deployment. Add abuse controls before broadly exposing a service with billable AI credits.
+The hackathon requires free access for judges until judging ends in December 2026. Only use images you are entitled to share. The app is a demonstration, not a production multi-tenant evidence platform: there is no account system, encryption at rest, or permanent storage SLA. Uploaded case URLs are unguessable but shareable; do not upload confidential imagery on a public deployment. Anonymous uploads are limited to 20 per client address per hour and 200 globally per day; live analyses are limited to 12 per client address per hour, 60 globally per day, and two concurrent requests. Counters are in memory and reset on restart; a reverse proxy may group multiple viewers under one client address. At most 100 cases are stored, and case photos/JSON older than 24 hours are removed on the next request that runs cleanup. These bounds protect a small public demo but do not replace a production abuse-control service.
 
 ## Architecture
 
@@ -159,7 +161,6 @@ The project evolves from an earlier offline PARALLAX idea with image checks and 
 - `docs/DEVPOST_SUBMISSION.md` — project description, prerequisites, placeholders, and acceptance checklist.
 - `docs/VIDEO_SCRIPT.md` — under-3-minute recording outline.
 - `docs/TECH_FEEDBACK.md` — feedback worksheet; fill using real inference results.
-- `docs/PUBLISH_TO_GITHUB.md` — safe publishing workflow without overwriting existing local PARALLAX files.
 
 ## License
 
