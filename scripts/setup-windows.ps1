@@ -1,7 +1,15 @@
 $ErrorActionPreference = 'Stop'
 Set-Location (Split-Path -Parent $PSScriptRoot)
 Write-Host 'Setting up PARALLAX Studio...' -ForegroundColor Green
-if (-not (Test-Path '.venv')) { py -3.12 -m venv .venv }
+if (-not (Test-Path '.venv')) {
+  if (Get-Command py -ErrorAction SilentlyContinue) {
+    py -3.12 -m venv .venv
+  } elseif (Get-Command python -ErrorAction SilentlyContinue) {
+    python -m venv .venv
+  } else {
+    throw 'Python 3.11+ is required. Install it before running setup.'
+  }
+}
 & '.\.venv\Scripts\python.exe' -m pip install -r requirements.txt
 if (-not (Test-Path '.env')) {
   Copy-Item '.env.example' '.env'

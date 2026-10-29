@@ -40,7 +40,7 @@ The point is not to make AI more confident. It's to **make its uncertainty usefu
 
 ```powershell
 cd "C:\Users\bhagy\OneDrive\Desktop\parallex\parallex-nebius"
-py -3.12 -m venv .venv
+python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 Copy-Item .env.example .env
 notepad .env

@@ -29,7 +29,7 @@ from app.engine import (
 
 ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(ROOT / ".env", override=False)
-DATA = Path(os.getenv("PARALLAX_DATA_DIR", str(ROOT / "data"))).resolve()
+DATA = Path(os.getenv("PARALLAX_DATA_DIR") or str(ROOT / "data")).resolve()
 SESSIONS = DATA / "sessions"
 SESSIONS.mkdir(parents=True, exist_ok=True)
 STATIC = ROOT / "app" / "static"
