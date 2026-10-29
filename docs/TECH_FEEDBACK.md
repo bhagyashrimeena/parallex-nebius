@@ -19,7 +19,7 @@ The hackathon requires specific feedback about Nebius and NVIDIA technology. The
 - Specific improvement request: **[ONE REPRODUCIBLE CHANGE]**
 
 ## Reproducibility
-- Tested version/commit: **[GIT SHA]**
+- Tested version/commit: `f1cb4e0` passed 20 local automated tests; **[REPLACE WITH LIVE-TEST COMMIT WHEN VERIFIED]**
 - Date of actual live test: **[TIME IST]**
 - Video URL: **[PUBLIC YOUTUBE]**
 - Deployment URL: **[PUBLIC WORKING WEBSITE]**
