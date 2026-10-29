@@ -1,3 +1,5 @@
+> **Repository preparation status (2026-10-29):** Documentation and Codex handoff are committed; the full application source is **NOT YET pushed**. Use the ZIP plus `push_parallax.ps1` from the ChatGPT handoff to publish it before deploying. After verifying the source and tests, remove this banner. Follow `AGENTS.md` and [issue #1](https://github.com/bhagyashrimeena/parallex-nebius/issues/1).
+
 # PARALLAX Studio
 
 **See what matters. Question the rest.**
