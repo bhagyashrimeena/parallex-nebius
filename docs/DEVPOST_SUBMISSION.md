@@ -33,14 +33,14 @@ Coordinate-guided regions of interest, multi-angle comparisons, human-annotated 
 Python, FastAPI, Pydantic, Pillow, HTTPX, Vanilla JavaScript, Docker, pytest, NVIDIA Nemotron 3.5 Super VL, Nebius Token Factory.
 
 ## Submission fields needing real validation
-- Public repository URL: `https://github.com/bhagyashrimeena/parallex-nebius` **[SOURCE PUSHED AT e91eee9; REPOSITORY STILL PRIVATE]**
+- Public repository URL: `https://github.com/bhagyashrimeena/parallex-nebius` **[PUBLIC; VERIFIED WITHOUT AUTHENTICATION ON OCTOBER 30]**
 - Deployed functional URL: **[DEPLOY & TEST LIVE]**
 - Public YouTube demo (duration strictly less than 3:00): **[UPLOAD]**
 - Working Nebius request with account credits and vision model: **[VERIFY]**
 - Teammates added + accepted: Bhagyashri Meena and Aadish Shelke are both listed on the Devpost draft.
 - Technical feedback: use `docs/TECH_FEEDBACK.md`, based on real runs.
 - Significant updates during submission period: explain only changes accurately dated after Aug 26.
-- Public repo license detection: MIT detected in the private repository; **[RECHECK AFTER PUBLIC VISIBILITY]**
+- Public repo license detection: GitHub's public repository API reports SPDX `MIT`.
 - Final human approval and Devpost submit confirmation: **[NOT YET DONE]**
 
 **Personal cutoff target:** Oct 30, 2026 at **3 PM IST**, before the 8:30 PM Halloween event. Official deadline: Oct 30, **10:30 PM IST** (10:00 AM PT). Do not edit submitted materials after the official deadline.

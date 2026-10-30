@@ -1,4 +1,4 @@
-> **Verification status (2026-10-29):** The application source is included. Local automated tests pass (20/20) and frontend JavaScript parses. A real Nebius request, hosted HTTPS workflow, public video, and Devpost submission still require verification. Follow `AGENTS.md` and [issue #1](https://github.com/bhagyashrimeena/parallex-nebius/issues/1).
+> **Verification status (2026-10-30):** The application source is public. Local automated tests pass (20/20) and frontend JavaScript parses. A real Nebius request, hosted HTTPS workflow, public video, and Devpost submission still require verification. Follow `AGENTS.md` and [issue #1](https://github.com/bhagyashrimeena/parallex-nebius/issues/1).
 
 # PARALLAX Studio
 
@@ -104,7 +104,7 @@ pip install -r requirements-dev.txt
 pytest -q
 ```
 
-The test suite stubs `app.engine._call_nebius` for the two-call integration test. On October 29, 2026, `python -m pytest -q` passed **20 tests** locally; `node --check app/static/app.js` also passed. **These are not substitutes for a live end-to-end test.**
+The test suite stubs `app.engine._call_nebius` for the two-call integration test. On October 30, 2026, `python -m pytest -q` passed **20 tests** locally; `node --check app/static/app.js` also passed. **These are not substitutes for a live end-to-end test.**
 
 For a temporary live verification using the included synthetic image, run `powershell -ExecutionPolicy Bypass -File .\scripts\verify-live.ps1` from the repository root. It prompts for the API key with hidden input, makes two real Token Factory requests, checks human review and JSON export, prints redacted status/timings, and removes the temporary case. Do not record a success claim unless this script actually passes.
 
