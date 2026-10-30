@@ -33,11 +33,11 @@ Coordinate-guided regions of interest, multi-angle comparisons, human-annotated 
 Python, FastAPI, Pydantic, Pillow, HTTPX, Vanilla JavaScript, Docker, pytest, NVIDIA Nemotron 3.5 Super VL, Nebius Token Factory.
 
 ## Submission fields needing real validation
-- Public repository URL: `https://github.com/bhagyashrimeena/parallex-nebius` **[SOURCE PUSHED AT f1cb4e0; REPOSITORY STILL PRIVATE]**
+- Public repository URL: `https://github.com/bhagyashrimeena/parallex-nebius` **[SOURCE PUSHED AT e91eee9; REPOSITORY STILL PRIVATE]**
 - Deployed functional URL: **[DEPLOY & TEST LIVE]**
 - Public YouTube demo (duration strictly less than 3:00): **[UPLOAD]**
 - Working Nebius request with account credits and vision model: **[VERIFY]**
-- Teammates added + accepted: **[CHECK DEVPOST FORM]**
+- Teammates added + accepted: Bhagyashri Meena and Aadish Shelke are both listed on the Devpost draft.
 - Technical feedback: use `docs/TECH_FEEDBACK.md`, based on real runs.
 - Significant updates during submission period: explain only changes accurately dated after Aug 26.
 - Public repo license detection: MIT detected in the private repository; **[RECHECK AFTER PUBLIC VISIBILITY]**
